@@ -21,6 +21,8 @@ for iter = 1:num_iters
     theta_1 = theta(2, 1);
     
     %computing gradient
+    
+    %NOTE: I used the slides formula which got a little complicated or I was too dumb to understand. However, same could be achieved with (X*theta) instead of (theta' * X')'
     theta_0 = theta_0 - (alpha / m) * ( sum( (theta' * X')' - y ) );
     theta_1 = theta_1 - (alpha / m) * ( sum( ((theta' * X')' - y )  .* X(:, 2) ) );
     
