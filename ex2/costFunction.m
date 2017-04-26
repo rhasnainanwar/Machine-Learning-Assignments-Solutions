@@ -21,9 +21,7 @@ grad = zeros(size(theta));
   h = sigmoid( X*theta ); %hypothesis
   J = sum( -y.*log( h ) - (1 - y).*log(1 - h ) )/m; %cost function
   
-  for i=1:size(theta, 2)
-    grad(:,i) = sum( (h - y).*X(:,i) ); %gradient for each variable
-  end
+  grad = ( X'*(h - y) )/m;
 % =============================================================
 
 end
