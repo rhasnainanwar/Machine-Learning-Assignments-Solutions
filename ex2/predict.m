@@ -15,7 +15,7 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 for i = 1:m %predicting each example
-  % Here I could have used the above mentioned notation, but with some Calculus it is obvious that sigmoid is >= 0.5 when the parameter is >= 0. So, I can eliminate extra burden of sigmoid
+% I could have used the above mentioned notation, but with some Calculus it is obvious that sigmoid is >= 0.5 when the parameter is >= 0. So, I can eliminate extra burden of sigmoid
   if( X(i,:)*theta >= 0 ) % A complete example
     p(i) = 1;
   endif
