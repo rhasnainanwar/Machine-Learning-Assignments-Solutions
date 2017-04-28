@@ -24,8 +24,11 @@ grad = zeros(size(theta));
     theta_(1) = 0;   % because we don't add anything for j = 0  
     
     % regularized cost function
-    J = ( 2*sum( -y.*log( h ) - (1 - y).*log(1 - h ) )  + lambda*sum( theta_.^2 ) )/(2*m);
-  
+    % J = ( 2*sum( -y.*log( h ) - (1 - y).*log(1 - h ) )  + lambda*sum( theta_.^2 ) )/(2*m);
+    
+    J = sum( -y.*log( h ) - (1 - y).*log(1 - h ) ) / m; % unregularized
+    J = J + lambda*sum( theta_.^2 )/(2*m); % regularized
+    
     %gradient
     grad = ( X'*(h - y) )/m; % unregularized gradient
     grad = grad + lambda*theta_/m; % regularized gradient
