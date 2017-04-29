@@ -51,7 +51,7 @@ X = [ones(m, 1) X];
 %    for j = 1:num_labels
 %      if( (all_theta(j, :) * new_X(:, i)) >= 0 )
 %        % if the parameter of sigmoid is >= 0, sigmoid is >= 0.5, so we can just check the parameter rather than the result of sigmoid.
-%        % if the parameter is non-negative, sigmoid will give a positive label. I'm just check the positive answer and noting its index here, instead of making matrices and then finding the index from 1-10
+%        % if the parameter is non-negative, sigmoid will give a positive label. I'm just checking the positive answer and noting its index here, instead of making matrices and then finding the index from 1-10
 %        % NOT A GOOD SOLUTION but a TRY
 %       p(i) = j;
 %      endif
