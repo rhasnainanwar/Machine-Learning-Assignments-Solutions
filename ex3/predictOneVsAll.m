@@ -1,3 +1,8 @@
+%	ACCURACY,
+% 	Expected: 94.9%
+%		Achieved: 95.1%
+
+
 function p = predictOneVsAll(all_theta, X)
 %  PREDICT Predict the label for a trained one-vs-all classifier. The labels 
 %  are in the range 1..K, where K = size(all_theta, 1). 
