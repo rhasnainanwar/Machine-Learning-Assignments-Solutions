@@ -35,12 +35,8 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 
-
-  % for multiplication
-  theta = all_theta';
-  
   %hypothesis of some sort
-  h = X * theta;
+  h = X * all_theta';
   % Here, I've not taken sigmoid of X * theta, because, sigmoid of maximum X * theta would also be maximum and we are only concerned with the index of maximum entry.
   
   % hypothesis is a m x k matrix, max would give index of most probable k for each example
