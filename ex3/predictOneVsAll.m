@@ -41,6 +41,7 @@ X = [ones(m, 1) X];
   
   %hypothesis of some sort
   h = X * theta;
+  % Here, I've not taken sigmoid of X * theta, because, sigmoid of maximum X * theta would also be maximum and we are only concerned with the index of maximum entry.
   
   % hypothesis is a m x k matrix, max would give index of most probable k for each example
   [tmp p] = max(h, [], 2);
