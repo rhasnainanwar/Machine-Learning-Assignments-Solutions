@@ -1,6 +1,6 @@
-%	ACCURACY,
-% 	Expected: 94.9%
-%		Achieved: 95.1%
+%ACCURACY,
+% Expected: 94.9%
+% Achieved: 95.1%
 
 
 function p = predictOneVsAll(all_theta, X)
