@@ -64,15 +64,17 @@ Theta2_grad = zeros(size(Theta2));
 
 X = [ones(m, 1) X]; %adding 1's column in X i.e, bias unit
 
-% making y comparable to h, as Y
+% making y comparable to h, as Y for binary mapping
 Y = zeros(m, num_labels);
 for i = 1:m
   Y(i, y(i)) = 1;
 end
 
-a_2 = sigmoid( X * Theta1' ); %evaluating activation
+z_2 = X * Theta1';
+a_2 = sigmoid( z_2 ); %evaluating activation
 a_2 = [ones(m, 1) a_2]; %adding unit bias column
-a_3 = sigmoid(a_2 * Theta2');
+z_3 = a_2 * Theta2';
+a_3 = sigmoid( z_3 );
 
 % cost function
 for i = 1:num_labels
@@ -82,13 +84,28 @@ end
 J /= m;
 
 % setting up for regularization
-theta1_ = Theta1(:,2:end).^2;
-theta2_ = Theta2(:,2:end).^2;
+theta1_ = Theta1(:,2:end);
+theta2_ = Theta2(:,2:end);
 
 % regularized cost function
-J = J + ( sum(sum(theta1_)) + sum(sum(theta2_)) ) * lambda / (2*m);
+J = J + ( sum(sum(theta1_.^2)) + sum(sum(theta2_.^2)) ) * lambda / (2*m);
 
+% gradient, delta stands for lower case delta
+delta_3 = a_3 - Y;
 
+% size adjustment
+z_2 = [ones(m, 1) z_2];
+
+delta_2 = (delta_3 * Theta2).*sigmoidGradient( z_2 );
+% readjustment
+delta_2 = delta_2(:, 2:end);
+
+Theta1_grad = (delta_2' * X)/m;
+Theta2_grad = (delta_3' * a_2)/m;
+
+% regularization
+Theta1_grad(:, 2:end) += lambda*theta1_;
+Theta2_grad(:, 2:end) += lambda*theta2_;
 % -------------------------------------------------------------
 
 % =========================================================================
