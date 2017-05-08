@@ -23,7 +23,12 @@ thetaReg = theta;
 thetaReg(1) = 0;
 
 % cost
-J = ( sum( (X * theta - y).^2 ) + sum(thetaReg.^2) ) / (2*m);
+J = ( sum( (X * theta - y).^2 ) + lambda*sum(thetaReg.^2) ) / (2*m);
+
+%gradient
+grad = ( X'*(X * theta - y) )/m;
+% regularized gradient
+grad = grad + lambda*thetaReg/m;
 
 % =========================================================================
 
