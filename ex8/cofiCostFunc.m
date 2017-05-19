@@ -47,6 +47,13 @@ X_grad = ((X * Theta').*R - Y) * Theta;
 %gradient for Theta
 Theta_grad = ((X * Theta').*R - Y)' * X;
 
+%regularized cost
+J = J + ( sum(sum(X.^2)) + sum(sum(Theta.^2)) ) * lambda / 2;
+%regularized X gradient
+X_grad = X_grad + lambda * X;
+%regularized Theta gradient
+Theta_grad =  Theta_grad  + lambda * Theta;
+
 % =============================================================
 
 grad = [X_grad(:); Theta_grad(:)];
