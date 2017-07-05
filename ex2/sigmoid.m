@@ -15,6 +15,7 @@ g = zeros(size(z));
       g(i, j) = 1/( 1 + e^-(z(i, j)) ); %sigmoid for each entry
     end
   end  
+  % or in vectorized form g = 1 / (1 + e^-z ) 
 % =============================================================
 
 end
