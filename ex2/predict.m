@@ -21,7 +21,7 @@ for i = 1:m %predicting each example
   endif
   % No else needed, as the p is initialized zero.
 end  %end for loop
-
+% in vectorized notation p = sigmoid(theta' * x) >= 0.5 as true indicates 1 in octave
 % =========================================================================
 
 end
